@@ -1,12 +1,12 @@
 A simple [Shikiji](https://shikiji.netlify.app/) endpoint set up with [Nitro](https://nitro.unjs.io/).
 
-- Vercel Edge: https://nitro-shikiji.vercel.app/
+###### Deployments
+
+Vercel Edge: https://nitro-shikiji.vercel.app/
 
 > More deployments coming soon.
 
----
-
-## References
+###### References
 
 - [Shikiji](https://shikiji.netlify.app/)
 - [TwoSlash](https://www.typescriptlang.org/dev/twoslash/)
