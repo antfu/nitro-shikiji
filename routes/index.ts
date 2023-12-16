@@ -49,19 +49,10 @@ double.value = 5
 `
 
 export default lazyEventHandler(async () => {
-  // try {
-  //   // try loading `.wasm` directly for Cloudflare Workers
-  //   const wasm = await import('shikiji/onig.wasm').then(r => r.default)
-  //   await loadWasm(async obj => WebAssembly.instantiate(wasm, obj))
-  // }
-  // catch {
-  // otherwise fallback to base64 inlined wasm
   await loadWasm({ data: await import('shikiji/wasm').then(r => r.getWasmInlined()).then(r => r.data) })
-  // }
-
   const shiki = await getHighlighterCore()
 
-  return eventHandler(async (event) => {
+  return cachedEventHandler(async (event) => {
     const {
       code = EXAMPLE,
       lang = 'ts',
@@ -99,5 +90,7 @@ export default lazyEventHandler(async () => {
       result = STYLE(shiki.getTheme(theme)?.type || 'auto') + result
 
     return result
+  }, {
+    maxAge: 60 * 60 * 24 * 30, // 30 days
   })
 })
