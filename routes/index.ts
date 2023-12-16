@@ -35,12 +35,17 @@ const EXAMPLE = `/**
 // @annotate: Hover on tokens to see the types
 
 
-import { ref } from '@vue/reactivity'
+import { ref, computed } from '@vue/reactivity'
 
 console.log("Hello World!")
 
-const a = ref(1)
-//         ^?
+const value = ref(1)
+const double = computed(() => value.value * 2)
+//      ^?
+
+
+
+double.value = 5
 `
 
 export default lazyEventHandler(async () => {

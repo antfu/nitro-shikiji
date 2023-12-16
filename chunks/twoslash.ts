@@ -7,6 +7,11 @@ async function _start() {
     compilerOptions: {
       lib: ['esnext', 'dom'],
     },
+    twoSlashOptionsOverrides: {
+      defaultOptions: {
+        noErrorValidation: true,
+      },
+    },
   })
 
   return {
