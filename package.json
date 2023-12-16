@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "prepare": "nitropack prepare",
+    "dev": "nitropack dev",
+    "build": "nitropack build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "nitropack": "latest"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.4.6",
+    "eslint": "8.55.0",
+    "shikiji": "^0.9.9",
+    "shikiji-twoslash": "^0.9.9",
+    "twoslash-cdn": "^0.0.2"
+  }
+}
