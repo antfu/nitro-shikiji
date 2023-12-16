@@ -44,15 +44,15 @@ const a = ref(1)
 `
 
 export default lazyEventHandler(async () => {
-  try {
-    // try loading `.wasm` directly for Cloudflare Workers
-    const wasm = await import('shikiji/onig.wasm').then(r => r.default)
-    await loadWasm(async obj => WebAssembly.instantiate(wasm, obj))
-  }
-  catch {
-    // otherwise fallback to base64 inlined wasm
-    await loadWasm({ data: await import('shikiji/wasm').then(r => r.getWasmInlined()).then(r => r.data) })
-  }
+  // try {
+  //   // try loading `.wasm` directly for Cloudflare Workers
+  //   const wasm = await import('shikiji/onig.wasm').then(r => r.default)
+  //   await loadWasm(async obj => WebAssembly.instantiate(wasm, obj))
+  // }
+  // catch {
+  // otherwise fallback to base64 inlined wasm
+  await loadWasm({ data: await import('shikiji/wasm').then(r => r.getWasmInlined()).then(r => r.data) })
+  // }
 
   const shiki = await getHighlighterCore()
 
