@@ -1,7 +1,5 @@
-import type { ShikijiTransformer } from 'shikiji/core'
-import { getHighlighterCore, loadWasm } from 'shikiji/core'
-import { bundledThemes } from 'shikiji/themes'
-import { bundledLanguages } from 'shikiji/langs'
+import type { ShikijiTransformer } from 'shikiji'
+import { bundledLanguages, bundledThemes, getHighlighterCore, loadWasm } from 'shikiji'
 
 function STYLE(color: string) {
   return `
@@ -81,7 +79,7 @@ export default lazyEventHandler(async () => {
       shiki.loadLanguage(bundledLanguages[lang as keyof typeof bundledLanguages]),
       shiki.loadTheme(bundledThemes[theme as keyof typeof bundledThemes]),
       twoslash
-        ? import('../twoslash').then(r => r.prepare(code))
+        ? import('../chunks/twoslash').then(r => r.prepare(code))
           .then(({ transformer }) => transformers.push(transformer))
         : undefined,
     ])
